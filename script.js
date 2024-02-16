@@ -1,24 +1,23 @@
 const player = document.querySelector("#player");
 const buttons = document.querySelectorAll("button");
-const options = ["Rock", "Paper", "Scissors"];
 const opponent = document.querySelector("#opponent");
 const counter = document.querySelector("#counter");
 const startBtn = document.querySelector("#startBtn");
 const outcome = document.querySelector("#outcome");
-console.log(outcome.innerText);
+const scoreBoard = document.querySelector("#scoreBoard");
 const time = 2500;
-const win = 0
-const loss = 0
+
+const options = ["Rock", "Paper", "Scissors"];
 
 let count = 3;
-console.log(buttons);
+let score = 0;
+
 
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
+    console.log(score)
     const btnValue = button.attributes.value.value;
-    player.innerText =  btnValue;
-    console.log(btnValue);
-    return btnValue;
+    player.innerText = btnValue;
   });
 });
 
@@ -27,11 +26,11 @@ function oppChoices() {
 
   setTimeout(() => {
     opponent.innerText = oppChoice;
-    rules()
-    console.log(player.innerText, opponent.innerText)
+    rules();
+    scoreBoard.innerText = score
+    console.log(score)
   }, time);
-
-  return oppChoice;
+  
 }
 
 function startClock() {
@@ -46,24 +45,30 @@ function startClock() {
   }, time / 4);
 }
 
-function rules(){
-        if((player.innerText == "Paper" && opponent.innerText == "Rock") ||
-        (player.innerText == "Rock" && opponent.innerText == "Scissors") ||
-        (player.innerText == "Scissors" && opponent.innerText == "Paper")){
-            outcome.innerText = "You win !"
-            win += 1
-        }else if ((player.innerText == "Paper" && opponent.innerText == "Scissors") ||
-        (player.innerText == "Rock" && opponent.innerText == "Paper") ||
-        (player.innerText == "Scissors" && opponent.innerText == "Rock")){
-            outcome.innerText = "You loose !"
-            loss += 1
-        }else {
-            outcome.innerText = "Draw !"
-        }
+
+function rules() {
+  if (
+    (player.innerText == "Paper" && opponent.innerText == "Rock") ||
+    (player.innerText == "Rock" && opponent.innerText == "Scissors") ||
+    (player.innerText == "Scissors" && opponent.innerText == "Paper")
+  ) {
+    outcome.innerText = "You win !";
+    score += 1
+  } else if (
+    (player.innerText == "Paper" && opponent.innerText == "Scissors") ||
+    (player.innerText == "Rock" && opponent.innerText == "Paper") ||
+    (player.innerText == "Scissors" && opponent.innerText == "Rock")
+  ) {
+    score -= 1
+    outcome.innerText = "You loose !";
+  } else {
+    outcome.innerText = "Draw !";
+  }
 }
 
+
+
 function startGame() {
-  
   startClock();
   oppChoices();
 }
