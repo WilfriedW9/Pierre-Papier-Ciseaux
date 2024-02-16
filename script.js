@@ -8,14 +8,13 @@ const scoreBoard = document.querySelector("#scoreBoard");
 const time = 2500;
 
 const options = ["Rock", "Paper", "Scissors"];
-
+console.log(options[0]);
 let count = 3;
 let score = 0;
 
-
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
-    console.log(score)
+    console.log(score);
     const btnValue = button.attributes.value.value;
     player.innerText = btnValue;
   });
@@ -27,46 +26,42 @@ function oppChoices() {
   setTimeout(() => {
     opponent.innerText = oppChoice;
     rules();
-    scoreBoard.innerText = score
-    console.log(score)
+    scoreBoard.innerText = score;
+    console.log(score);
   }, time);
-  
 }
 
 function startClock() {
   let clock = setInterval(() => {
     counter.innerText = count;
     count--;
-
     if (count < 0) {
+
       clearInterval(clock);
       count = 3;
     }
   }, time / 4);
 }
 
-
 function rules() {
   if (
-    (player.innerText == "Paper" && opponent.innerText == "Rock") ||
-    (player.innerText == "Rock" && opponent.innerText == "Scissors") ||
-    (player.innerText == "Scissors" && opponent.innerText == "Paper")
+    (player.innerText == options[1] && opponent.innerText == options[0]) ||
+    (player.innerText == options[0] && opponent.innerText == options[2]) ||
+    (player.innerText == options[2] && opponent.innerText == options[1])
   ) {
     outcome.innerText = "You win !";
-    score += 1
+    score += 1;
   } else if (
-    (player.innerText == "Paper" && opponent.innerText == "Scissors") ||
-    (player.innerText == "Rock" && opponent.innerText == "Paper") ||
-    (player.innerText == "Scissors" && opponent.innerText == "Rock")
+    (player.innerText == options[1] && opponent.innerText == options[2]) ||
+    (player.innerText == options[0] && opponent.innerText == options[1]) ||
+    (player.innerText == options[2] && opponent.innerText == options[0])
   ) {
-    score -= 1
+    score -= 1;
     outcome.innerText = "You loose !";
   } else {
     outcome.innerText = "Draw !";
   }
 }
-
-
 
 function startGame() {
   startClock();
