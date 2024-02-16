@@ -1,12 +1,14 @@
 const player = document.querySelector("#player");
 const buttons = document.querySelectorAll("button");
-const options = ["Pierre", "Papier", "Ciseaux"];
+const options = ["Rock", "Paper", "Scissors"];
 const opponent = document.querySelector("#opponent");
 const counter = document.querySelector("#counter");
 const startBtn = document.querySelector("#startBtn");
 const outcome = document.querySelector("#outcome");
 console.log(outcome.innerText);
 const time = 2500;
+const win = 0
+const loss = 0
 
 let count = 3;
 console.log(buttons);
@@ -45,14 +47,16 @@ function startClock() {
 }
 
 function rules(){
-        if((player.innerText == "Papier" && opponent.innerText == "Pierre") ||
-        (player.innerText == "Pierre" && opponent.innerText == "Ciseaux") ||
-        (player.innerText == "Ciseaux" && opponent.innerText == "Papier")){
+        if((player.innerText == "Paper" && opponent.innerText == "Rock") ||
+        (player.innerText == "Rock" && opponent.innerText == "Scissors") ||
+        (player.innerText == "Scissors" && opponent.innerText == "Paper")){
             outcome.innerText = "You win !"
-        }else if ((player.innerText == "Papier" && opponent.innerText == "Ciseaux") ||
-        (player.innerText == "Pierre" && opponent.innerText == "Papier") ||
-        (player.innerText == "Ciseaux" && opponent.innerText == "Pierre")){
+            win += 1
+        }else if ((player.innerText == "Paper" && opponent.innerText == "Scissors") ||
+        (player.innerText == "Rock" && opponent.innerText == "Paper") ||
+        (player.innerText == "Scissors" && opponent.innerText == "Rock")){
             outcome.innerText = "You loose !"
+            loss += 1
         }else {
             outcome.innerText = "Draw !"
         }
