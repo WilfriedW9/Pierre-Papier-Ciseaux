@@ -26,6 +26,7 @@ function oppChoices() {
   setTimeout(() => {
     opponent.innerText = oppChoice;
     rules();
+    new Audio("sfx_click_site.wav").play()
     scoreBoard.innerText = score;
     console.log(score);
   }, time);
