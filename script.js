@@ -4,7 +4,10 @@ const options = ["Pierre", "Papier", "Ciseaux"];
 const opponent = document.querySelector("#opponent");
 const counter = document.querySelector("#counter");
 const startBtn = document.querySelector("#startBtn");
-const time = 2500
+const outcome = document.querySelector("#outcome");
+outcome.innerText = "Allo"
+console.log(outcome.innerText);
+const time = 2500;
 
 let count = 3;
 console.log(buttons);
@@ -33,25 +36,18 @@ function startClock() {
     counter.innerText = count;
     count--;
 
-    if(count < 0){
-        clearInterval(clock)
-        count = 3
+    if (count < 0) {
+      clearInterval(clock);
+      count = 3;
     }
-  }, time/4);
-
-  
+  }, time / 4);
 }
 
-
-function startGame(){
-    
-    startClock()
-    oppChoices();
+function startGame() {
+  startClock();
+  oppChoices();
 }
+
 startBtn.addEventListener("click", () => {
-    startGame()
+  startGame();
 });
-
-
-
-
