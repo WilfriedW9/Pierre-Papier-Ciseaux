@@ -5,7 +5,6 @@ const opponent = document.querySelector("#opponent");
 const counter = document.querySelector("#counter");
 const startBtn = document.querySelector("#startBtn");
 const outcome = document.querySelector("#outcome");
-outcome.innerText = "Allo"
 console.log(outcome.innerText);
 const time = 2500;
 
@@ -15,7 +14,7 @@ console.log(buttons);
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
     const btnValue = button.attributes.value.value;
-    player.innerText = btnValue;
+    player.innerText =  btnValue;
     console.log(btnValue);
     return btnValue;
   });
@@ -26,6 +25,8 @@ function oppChoices() {
 
   setTimeout(() => {
     opponent.innerText = oppChoice;
+    rules()
+    console.log(player.innerText, opponent.innerText)
   }, time);
 
   return oppChoice;
@@ -43,7 +44,22 @@ function startClock() {
   }, time / 4);
 }
 
+function rules(){
+        if((player.innerText == "Papier" && opponent.innerText == "Pierre") ||
+        (player.innerText == "Pierre" && opponent.innerText == "Ciseaux") ||
+        (player.innerText == "Ciseaux" && opponent.innerText == "Papier")){
+            outcome.innerText = "You win !"
+        }else if ((player.innerText == "Papier" && opponent.innerText == "Ciseaux") ||
+        (player.innerText == "Pierre" && opponent.innerText == "Papier") ||
+        (player.innerText == "Ciseaux" && opponent.innerText == "Pierre")){
+            outcome.innerText = "You loose !"
+        }else {
+            outcome.innerText = "Draw !"
+        }
+}
+
 function startGame() {
+  
   startClock();
   oppChoices();
 }
