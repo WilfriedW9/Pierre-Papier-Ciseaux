@@ -1,0 +1,38 @@
+*,*::after, *::before {
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    background-color: rgb(148, 158, 182);
+    height: 100vh;
+}
+
+.btn {
+    background-color: aliceblue;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 0 5px;
+    transition: opacity 0.15s, scale 0.1s, box-shadow 0.15s;
+    border: none;
+    
+}
+
+.btn:hover{
+    cursor: pointer;
+    opacity: 0.8;
+    transform: scale(1.1);
+    box-shadow: 5px 5px black;
+}
+
+.btn:active{
+    transform: scale(0.95);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
