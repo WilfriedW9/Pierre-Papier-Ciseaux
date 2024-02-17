@@ -8,13 +8,11 @@ const scoreBoard = document.querySelector("#scoreBoard");
 const time = 2500;
 
 const options = ["Rock", "Paper", "Scissors"];
-console.log(options[0]);
 let count = 3;
 let score = 0;
 
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
-    console.log(score);
     const btnValue = button.attributes.value.value;
     player.innerText = btnValue;
   });
@@ -28,7 +26,6 @@ function oppChoices() {
     rules();
     new Audio("sfx_click_site.wav").play()
     scoreBoard.innerText = score;
-    console.log(score);
   }, time);
 }
 
